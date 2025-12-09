@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import '../components/display.dart';
 import '../components/keyboard.dart';
+import '../models/memory.dart';
 
-class Calculator extends StatelessWidget {
+class Calculator extends StatefulWidget {
   const Calculator({super.key});
 
-  void onPressed(String text) {
-    print(text);
+  @override
+  State<Calculator> createState() => _CalculatorState();
+}
+
+class _CalculatorState extends State<Calculator> {
+  final Memory memory = Memory();
+
+  void onPressed(String command) {
+    setState(() {
+      memory.applyCommand(command);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Column(children: [const Display("12345"), Keyboard(onPressed)]),
+      home: Column(children: [Display(memory.value), Keyboard(onPressed)]),
     );
   }
 }

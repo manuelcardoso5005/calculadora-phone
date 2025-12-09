@@ -13,8 +13,12 @@ class Keyboard extends StatelessWidget {
       child: Column(
         children: [
           ButtonRow([
-            Button.big(text: "AC", onPressed: onButtonPressed),
-            Button.dark(text: "%", onPressed: onButtonPressed),
+            Button.big(
+              text: "AC",
+              color: Button.DARK,
+              onPressed: onButtonPressed,
+            ),
+            Button(text: "%", color: Button.DARK, onPressed: onButtonPressed),
             Button.operation(text: "/", onPressed: onButtonPressed),
           ]),
           ButtonRow([
