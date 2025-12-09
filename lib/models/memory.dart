@@ -1,8 +1,19 @@
 class Memory {
   String _value = "0";
   void applyCommand(String command) {
-    // Lógica para aplicar o comando e atualizar _value
-    _value += command; // Exemplo simples: apenas define o valor como o comando
+    if (command == "AC") {
+      _allClear();
+    } else {
+      if (_value == "0") {
+        _value = command;
+      } else {
+        _value += command;
+      }
+    }
+  }
+
+  _allClear() {
+    _value = "0";
   }
 
   String get value {
