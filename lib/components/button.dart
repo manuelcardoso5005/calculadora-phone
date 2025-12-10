@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  static const DARK = Color.fromRGBO(82, 82, 82, 1);
-  static const OPERATION = Color.fromRGBO(255, 159, 10, 1);
-  static const DEFAULT = Color.fromRGBO(112, 112, 112, 1);
+  static const DARK = Color(0xFF525252);
+  static const OPERATION = Color(0xFFFF9F0A);
+  static const DEFAULT = Color(0xFF707070);
 
   final String text;
   final bool big;
@@ -46,21 +46,33 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: big ? 2 : 1,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero, // sem arredondamento
+      child: Padding(
+        padding: const EdgeInsets.all(4.0), // espaço entre os botões
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: color,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16), // bordas arredondadas
+            ),
+            padding: EdgeInsets.symmetric(vertical: 22), // botão mais alto
+            elevation: 4, // sombra suave
+            shadowColor: Colors.black45,
           ),
-        ),
-
-        onPressed: () => onPressed(text),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 32,
-            fontWeight: FontWeight.w200,
+          onPressed: () => onPressed(text),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  offset: Offset(0, 1),
+                  blurRadius: 1,
+                  color: Colors.black26,
+                ),
+              ],
+            ),
           ),
         ),
       ),
